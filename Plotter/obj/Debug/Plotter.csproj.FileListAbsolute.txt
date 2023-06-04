@@ -1,0 +1,16 @@
+C:\Users\johan\source\repos\Plotter\Plotter\bin\Debug\Plotter.exe.config
+C:\Users\johan\source\repos\Plotter\Plotter\bin\Debug\Plotter.exe
+C:\Users\johan\source\repos\Plotter\Plotter\bin\Debug\Plotter.pdb
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.csproj.AssemblyReference.cache
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.csproj.SuggestedBindingRedirects.cache
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\MainWindow.g.cs
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\App.g.cs
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter_MarkupCompile.cache
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter_MarkupCompile.lref
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\MainWindow.baml
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.g.resources
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.Properties.Resources.resources
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.csproj.GenerateResource.cache
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.csproj.CoreCompileInputs.cache
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.exe
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.pdb
