@@ -71,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Servo.cs" />
     <Compile Include="Stepper.cs" />
     <Compile Include="Visu\Automatik.xaml.cs">
       <DependentUpon>Automatik.xaml</DependentUpon>
