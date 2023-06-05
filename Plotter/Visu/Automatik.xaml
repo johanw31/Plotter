@@ -8,7 +8,7 @@
       d:DesignHeight="750" d:DesignWidth="800"
       Title="Automatik">
 
-    <Grid>
+    <Grid HorizontalAlignment="Center" Width="800" Height="750" VerticalAlignment="Bottom">
         <Button x:Name="Importbtn" Width="100" Height ="30" Margin="442,10,258,710">Import File</Button>
         <TextBox Name="GcodeText" Margin="20,10,503,500">Gcode</TextBox>
         <Button x:Name="Startbtn" Width="100" Height="30" Margin="442,51,258,669">Start</Button>

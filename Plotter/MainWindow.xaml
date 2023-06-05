@@ -12,6 +12,7 @@
             <Button Name="BtnHand" Content="Hand / Home" MinWidth="100" Width="88"/>
             <Button Name="BtnLivePlot" Content="Live Plot" MinWidth ="100"/>
         </StackPanel>
+        <Button Name ="BtnConnect" Content="Connect" Height="40" Width="120"/>
         <Frame x:Name="Main" Margin="0,40,0,0" HorizontalAlignment="Right" Width="1000"/>
     </Grid>
 </Window>

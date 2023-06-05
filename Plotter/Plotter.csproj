@@ -73,6 +73,9 @@
     </Compile>
     <Compile Include="Servo.cs" />
     <Compile Include="Stepper.cs" />
+    <Compile Include="Tinker\BrickletServoV2.cs" />
+    <Compile Include="Tinker\BrickletSilentStepperV2.cs" />
+    <Compile Include="Tinker\IPConnection.cs" />
     <Compile Include="Visu\Automatik.xaml.cs">
       <DependentUpon>Automatik.xaml</DependentUpon>
     </Compile>
@@ -111,8 +114,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tinker\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
