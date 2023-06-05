@@ -14,3 +14,7 @@ C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.csproj.GenerateRes
 C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.csproj.CoreCompileInputs.cache
 C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.exe
 C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Plotter.pdb
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Visu\Automatik.g.cs
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Visu\Hand.g.cs
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Visu\Automatik.baml
+C:\Users\johan\source\repos\Plotter\Plotter\obj\Debug\Visu\Hand.baml

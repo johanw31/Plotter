@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1000" Width="1000">
     <Grid>
-        <Button x:Name="Importbtn" Width="100" Height="25" Margin="70,700,630,50"> Import File
-            </Button>
-        <TextBox Name="GcodeText" Width="500" Height="300"></TextBox>
-        <Button x:Name="Startbtn" Width="100" Height="25" Margin="190,700,500,50">Start</Button>
+        <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Top">
+            <Button Name="BtnAuto" Content="Automatik" MinWidth="100"/>
+            <Button Name="BtnHand" Content="Hand / Home" MinWidth="100" Width="88"/>
+            <Button Name="BtnLivePlot" Content="Live Plot" MinWidth ="100"/>
+        </StackPanel>
+        <Frame x:Name="Main" Margin="0,40,0,0" HorizontalAlignment="Right" Width="1000"/>
     </Grid>
 </Window>
