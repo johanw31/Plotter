@@ -1,2 +1,2 @@
 # Plotter
-Hello 2
+Hello
