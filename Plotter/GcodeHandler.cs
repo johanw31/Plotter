@@ -80,19 +80,21 @@ namespace Plotter
             {
                 if (myString.StartsWith("G0") | myString.StartsWith("G1"))
                 {
-                    int[] Data = { 0, 0, 0, 0, 0, 0 };
                     Positions = GcodeKoord(myString); //0:X 1:Y 2:Z 3:Geschwindigkeit
                     Positions[0] -= LastPos[0];
                     Positions[1] -= LastPos[1];
                     Positions[0] *= StepResolution;
                     Positions[1] *= StepResolution;
                     LastPos = GcodeKoord(myString);
-                    for (int i = 0; i < 4; i++)
-                    {
-                        Data[i] = (int)Positions[i];
-                    }
-                    Data[4] = (int)LastPos[0];
-                    Data[5] = (int)LastPos[1];
+                    int[] Data = new int[]
+                        {
+                        (int)Positions[0],
+                        (int)Positions[1],
+                        (int)Positions[2],
+                        (int)Positions[3],
+                        (int)LastPos[0],
+                        (int)LastPos[1],
+                        };
                     ListOfSteps.Add(Data);
                 }
             }

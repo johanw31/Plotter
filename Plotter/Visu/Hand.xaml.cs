@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +22,17 @@ namespace Plotter
     /// </summary>
     public partial class Hand : Page
     {
+        public int test = 0;
         public Hand()
         {
             InitializeComponent();
+            BtnHandUp.Click += new RoutedEventHandler(this.BtnHandUp_MouseDown);
+        }
+        private void BtnHandUp_MouseDown(object sender, EventArgs e) 
+        {
+            test++;
+            testbox.Text = test.ToString();
+            
         }
     }
 }
