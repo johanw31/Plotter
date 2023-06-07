@@ -13,6 +13,7 @@
         <Button Name="BtnHandRight" Width="50" Height="50" Content="Right" Margin="425,200,325,200"/>
         <Button Name="BtnHandDown" Width="50" Height="50" Content="Down" Margin="375,250,375,150"/>
         <Button Name="BtnHandLeft" Width="50" Height="50" Content="Left" Margin="325,200,425,200"/>
+        <Button Name="BtnZDown" Width="50" Height="50" Content="Pen Down" Margin="230,200,520,200"/>
         <TextBox Name="testbox" Width="100" Height="50" Margin="350,323,350,77"/>
     </Grid>
 </Page>

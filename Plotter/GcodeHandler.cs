@@ -14,7 +14,7 @@ namespace Plotter
     internal class GcodeHandler
     {
         public string GcodeFilePath = "";       //Pfad des Gcode Files
-        private double StepResolution = 0.0;    // steps pro mm
+        private double StepResolution = 80;    // steps pro mm
         private int LinearSpeed = 0;            //Geschwindigkeit bei Fahrt mit Stift oben
         private double[] LivePos = { 0, 0 };    // aktuelle Position
 
