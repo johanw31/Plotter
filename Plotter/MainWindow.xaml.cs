@@ -62,12 +62,12 @@ namespace Plotter
         {
             this.Stepper_X = new BrickletSilentStepperV2(UID_Stepper_X, ipcon); // Create device object
             this.Stepper_X.SetMotorCurrent(500); // 800 mA
-            this.Stepper_X.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_8, true); // 1/8 steps (interpolated)
-            this.Stepper_X.SetMaxVelocity(1000); // Velocity 2000 steps/s
+            this.Stepper_X.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_256, true); // 1/8 steps (interpolated)
+            this.Stepper_X.SetMaxVelocity(30000); // Velocity 2000 steps/s
 
             // Slow acceleration (500 steps/s^2),
             // Fast deacceleration (5000 steps/s^2)
-            this.Stepper_X.SetSpeedRamping(500, 5000);
+            this.Stepper_X.SetSpeedRamping(0, 0);
             this.Stepper_X.SetEnabled(true); // Enable motor power
         }
         private void InitStepper_Y()
@@ -75,12 +75,12 @@ namespace Plotter
 
             this.Stepper_Y = new BrickletSilentStepperV2(UID_Stepper_Y, ipcon); // Create device object
             this.Stepper_Y.SetMotorCurrent(500); // 800 mA
-            this.Stepper_Y.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_8, true); // 1/8 steps (interpolated)
-            this.Stepper_Y.SetMaxVelocity(1000); // Velocity 2000 steps/s
+            this.Stepper_Y.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_256, true); // 1/8 steps (interpolated)
+            this.Stepper_Y.SetMaxVelocity(30000); // Velocity 2000 steps/s
 
             // Slow acceleration (500 steps/s^2),
             // Fast deacceleration (5000 steps/s^2)
-            this.Stepper_Y.SetSpeedRamping(500, 5000);
+            this.Stepper_Y.SetSpeedRamping(0, 0);
             this.Stepper_Y.SetEnabled(true); // Enable motor power
         }
         private void InitServo_Z()

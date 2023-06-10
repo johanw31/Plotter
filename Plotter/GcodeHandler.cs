@@ -78,13 +78,14 @@ namespace Plotter
             double[] Positions;
             foreach (var myString in File.ReadAllLines(this.GcodeFilePath))
             {
+                Console.WriteLine(myString);
                 if (myString.StartsWith("G0") | myString.StartsWith("G1"))
                 {
                     Positions = GcodeKoord(myString); //0:X 1:Y 2:Z 3:Geschwindigkeit
                     Positions[0] -= LastPos[0];
                     Positions[1] -= LastPos[1];
                     Positions[0] *= StepResolution;
-                    Positions[1] *= StepResolution;
+                    Positions[1] *= -StepResolution;
                     LastPos = GcodeKoord(myString);
                     int[] Data = new int[]
                         {

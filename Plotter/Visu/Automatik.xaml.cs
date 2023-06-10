@@ -60,16 +60,17 @@ namespace Plotter
                 bool Temp;
                 Test = new GcodeHandler(GcodeName);
                 Test.Set_LinearSpeed(500);
-                Test.Set_StepResolution(80.0);
+                Test.Set_StepResolution(1280.0*2);
                 List<int[]> ttt = Test.Get_Steps();
                 int counter = 0;
                 do
                 { 
                     int Stepx = this.Stepper_X.GetRemainingSteps();
-                    int Stepy = this.Stepper_X.GetRemainingSteps();
+                    int Stepy = this.Stepper_Y.GetRemainingSteps();
+                    int[] print = ttt[counter];
                     if (Stepx == 0 & Stepy == 0)
                     {
-                        int[] print = ttt[counter];
+                        
                         if (print[2] > 0) { Temp = true; }
                         else { Temp = false; }
                         Draw(print[0], print[1], Temp);
@@ -92,10 +93,11 @@ namespace Plotter
         }
         private void Draw(int GoToX, int GoToY, bool GoToZ)
         {
+
             this.Servo_Z.SetEnable(0,GoToZ);
-            Thread.Sleep(50);
-            this.Stepper_X.SetSteps(GoToX);
-            this.Stepper_Y.SetSteps(GoToY);
+            Thread.Sleep(20);
+            if (GoToX > 1 | GoToX < -1) this.Stepper_X.SetSteps(GoToX);
+            if (GoToY > 1 | GoToY < -1) this.Stepper_Y.SetSteps(GoToY);
         }
     }
 
