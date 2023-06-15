@@ -62,8 +62,8 @@ namespace Plotter
         {
             this.Stepper_X = new BrickletSilentStepperV2(UID_Stepper_X, ipcon); // Create device object
             this.Stepper_X.SetMotorCurrent(500); // 800 mA
-            this.Stepper_X.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_256, true); // 1/8 steps (interpolated)
-            this.Stepper_X.SetMaxVelocity(30000); // Velocity 2000 steps/s
+            this.Stepper_X.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_128, true); // 1/8 steps (interpolated)
+            this.Stepper_X.SetMaxVelocity(120000); // Velocity 2000 steps/s
 
             // Slow acceleration (500 steps/s^2),
             // Fast deacceleration (5000 steps/s^2)
@@ -75,8 +75,8 @@ namespace Plotter
 
             this.Stepper_Y = new BrickletSilentStepperV2(UID_Stepper_Y, ipcon); // Create device object
             this.Stepper_Y.SetMotorCurrent(500); // 800 mA
-            this.Stepper_Y.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_256, true); // 1/8 steps (interpolated)
-            this.Stepper_Y.SetMaxVelocity(30000); // Velocity 2000 steps/s
+            this.Stepper_Y.SetStepConfiguration(BrickletSilentStepperV2.STEP_RESOLUTION_128, true); // 1/8 steps (interpolated)
+            this.Stepper_Y.SetMaxVelocity(120000); // Velocity 2000 steps/s
 
             // Slow acceleration (500 steps/s^2),
             // Fast deacceleration (5000 steps/s^2)

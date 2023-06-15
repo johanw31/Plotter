@@ -37,11 +37,11 @@ namespace Plotter
             string StringX, StringY;
             string StringSpeed = LinearSpeed.ToString();
             double[] GoTo = { 0, 0, 0, 0 };
-            if(Gcode.Contains("G0")) 
+            if(Gcode.Contains("G00")) 
             { 
                 GoTo[posZ] = 0;
             }
-            if(Gcode.Contains("G1")) 
+            if(Gcode.Contains("G01")) 
             { 
                 GoTo[posZ] = 1;
             }
@@ -55,15 +55,15 @@ namespace Plotter
             }
             StartIndex_speed = StringX.IndexOf('F') + 1;
             StringY = StringX.Substring(StartIndex_y);
-            if (!Gcode.Contains("G0"))
+            if (!Gcode.Contains("G00"))
             {
-                StringY = StringX.Substring(StartIndex_y, EndIndex_y - StartIndex_y);
+                StringY = StringX.Substring(StartIndex_y/*, EndIndex_y - StartIndex_y*/);
                 StringSpeed = StringX.Substring(StartIndex_speed/*, EndIndex_speed - StartIndex_speed*/);
             }
             StringX = StringX.Substring(StartIndex_x, EndIndex_x - StartIndex_x);
             GoTo[posX] = Convert.ToDouble(double.Parse(StringX, System.Globalization.CultureInfo.InvariantCulture));
             GoTo[posY] = Convert.ToDouble(double.Parse(StringY, System.Globalization.CultureInfo.InvariantCulture));
-            GoTo[speed] = Convert.ToDouble(double.Parse(StringSpeed, System.Globalization.CultureInfo.InvariantCulture));
+            GoTo[speed] = 300;//Convert.ToDouble(double.Parse(StringSpeed, System.Globalization.CultureInfo.InvariantCulture));
 
             return GoTo;
         }
@@ -79,7 +79,7 @@ namespace Plotter
             foreach (var myString in File.ReadAllLines(this.GcodeFilePath))
             {
                 Console.WriteLine(myString);
-                if (myString.StartsWith("G0") | myString.StartsWith("G1"))
+                if (myString.StartsWith("G00") | myString.StartsWith("G01"))
                 {
                     Positions = GcodeKoord(myString); //0:X 1:Y 2:Z 3:Geschwindigkeit
                     Positions[0] -= LastPos[0];
@@ -95,6 +95,19 @@ namespace Plotter
                         (int)Positions[3],
                         (int)LastPos[0],
                         (int)LastPos[1],
+                        };
+                    ListOfSteps.Add(Data);
+                }
+                if (myString.StartsWith("M2"))
+                {
+                    int[] Data = new int[]
+                        {
+                        (int)-LastPos[0],
+                        (int)-LastPos[1],
+                        0,
+                        300,
+                        0,
+                        0,
                         };
                     ListOfSteps.Add(Data);
                 }

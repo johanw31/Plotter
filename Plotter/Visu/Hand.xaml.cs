@@ -50,20 +50,20 @@ namespace Plotter
         private void BtnHandUp_MouseDown(object sender, EventArgs e) 
         {
             testbox.Text += "HI";
-            this.Stepper_Y.SetSteps(-5000); // Drive 60000 steps forward
+            this.Stepper_Y.SetSteps(-50000); // Drive 60000 steps forward
         }
         private void BtnHandDown_MouseDown(object sender, EventArgs e)
         {
-            this.Stepper_Y.SetSteps(10000); // Drive 60000 steps forward
+            this.Stepper_Y.SetSteps(50000); // Drive 60000 steps forward
         }
         private void BtnHandLeft_MouseDown(object sender, EventArgs e)
         {
-            this.Stepper_X.SetSteps(-10000); // Drive 60000 steps forward
+            this.Stepper_X.SetSteps(-50000); // Drive 60000 steps forward
 
         }
         private void BtnHandRight_MouseDown(object sender, EventArgs e)
         {
-            this.Stepper_X.SetSteps(10000); // Drive 60000 steps forward
+            this.Stepper_X.SetSteps(50000); // Drive 60000 steps forward
         }
         private void BtnZDown_MouseDown(object sender, EventArgs e)
         {

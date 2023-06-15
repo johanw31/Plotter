@@ -32,6 +32,8 @@ namespace Plotter
         private string GcodeName = "";
         private string Gcode = "";
         GcodeHandler Test;
+
+        private bool lastGoToZ = false;
         public Automatik(BrickletSilentStepperV2 Stepper_X, BrickletSilentStepperV2 Stepper_Y, BrickletServoV2 Servo_Z, IPConnection ipcon)
         {
             InitializeComponent();
@@ -58,17 +60,18 @@ namespace Plotter
             if (true/*GcodeName.Contains(".gcode")*/)
             {
                 bool Temp;
+                int Stepx, Stepy;
                 Test = new GcodeHandler(GcodeName);
                 Test.Set_LinearSpeed(500);
-                Test.Set_StepResolution(1280.0*2);
+                Test.Set_StepResolution(1280.0);
                 List<int[]> ttt = Test.Get_Steps();
                 int counter = 0;
                 do
                 { 
-                    int Stepx = this.Stepper_X.GetRemainingSteps();
-                    int Stepy = this.Stepper_Y.GetRemainingSteps();
+                    Stepx = this.Stepper_X.GetRemainingSteps();
+                    Stepy = this.Stepper_Y.GetRemainingSteps();
                     int[] print = ttt[counter];
-                    if (Stepx == 0 & Stepy == 0)
+                    if (Stepx == 0 & Math.Abs(Stepy) == 0)
                     {
                         
                         if (print[2] > 0) { Temp = true; }
@@ -93,9 +96,11 @@ namespace Plotter
         }
         private void Draw(int GoToX, int GoToY, bool GoToZ)
         {
-
-            this.Servo_Z.SetEnable(0,GoToZ);
-            Thread.Sleep(20);
+            if (GoToZ != lastGoToZ)
+            {
+                lastGoToZ = GoToZ;
+                this.Servo_Z.SetEnable(0, GoToZ);
+            }
             if (GoToX > 1 | GoToX < -1) this.Stepper_X.SetSteps(GoToX);
             if (GoToY > 1 | GoToY < -1) this.Stepper_Y.SetSteps(GoToY);
         }
