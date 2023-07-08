@@ -33,7 +33,6 @@ namespace Plotter
         private string Gcode = "";
         GcodeHandler Test;
 
-        private bool lastGoToZ = false;
         public Automatik(BrickletSilentStepperV2 Stepper_X, BrickletSilentStepperV2 Stepper_Y, BrickletServoV2 Servo_Z, IPConnection ipcon)
         {
             InitializeComponent();
@@ -55,7 +54,14 @@ namespace Plotter
                 //GcodeText.Text = this.Gcode;
             }
         }
-        private void Startbtn_Click(object sender, EventArgs e)
+        private async void Startbtn_Click(object sender, EventArgs e)
+        {
+            Task<int> task = StartTask(Test, GcodeName, Stepper_X, Stepper_Y, Servo_Z);
+            int result = await task;
+            Console.WriteLine($"Task complete with result: {result}");
+        }
+
+        static async Task<int> StartTask(GcodeHandler Test, string GcodeName, BrickletSilentStepperV2 Stepper_X, BrickletSilentStepperV2 Stepper_Y, BrickletServoV2 Servo_Z)
         {
             if (true/*GcodeName.Contains(".gcode")*/)
             {
@@ -67,18 +73,18 @@ namespace Plotter
                 List<int[]> ttt = Test.Get_Steps();
                 int counter = 0;
                 do
-                { 
-                    Stepx = this.Stepper_X.GetRemainingSteps();
-                    Stepy = this.Stepper_Y.GetRemainingSteps();
+                {
+                    Stepx = Stepper_X.GetRemainingSteps();
+                    Stepy = Stepper_Y.GetRemainingSteps();
                     int[] print = ttt[counter];
                     if (Stepx == 0 & Math.Abs(Stepy) == 0)
                     {
-                        
+
                         if (print[2] > 0) { Temp = true; }
                         else { Temp = false; }
-                        Draw(print[0], print[1], Temp);
+                        Draw(print[0], print[1], Temp, Stepper_X,Stepper_Y,Servo_Z);
                         counter++;
-                    } 
+                    }
                 } while (ttt.Count > counter);
                 /*foreach (var print in ttt)
                 {
@@ -93,16 +99,14 @@ namespace Plotter
                     //GcodeText.Text += "10";
                 }*/
             }
+            //await Task.Delay(20);
+            return 1;
         }
-        private void Draw(int GoToX, int GoToY, bool GoToZ)
+        private static void Draw(int GoToX, int GoToY, bool GoToZ, BrickletSilentStepperV2 Stepper_X, BrickletSilentStepperV2 Stepper_Y, BrickletServoV2 Servo_Z)
         {
-            if (GoToZ != lastGoToZ)
-            {
-                lastGoToZ = GoToZ;
-                this.Servo_Z.SetEnable(0, GoToZ);
-            }
-            if (GoToX > 1 | GoToX < -1) this.Stepper_X.SetSteps(GoToX);
-            if (GoToY > 1 | GoToY < -1) this.Stepper_Y.SetSteps(GoToY);
+            Servo_Z.SetEnable(0, GoToZ);
+            if (GoToX > 1 | GoToX < -1) Stepper_X.SetSteps(GoToX);
+            if (GoToY > 1 | GoToY < -1) Stepper_Y.SetSteps(GoToY);
         }
     }
 

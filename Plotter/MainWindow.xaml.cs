@@ -53,6 +53,7 @@ namespace Plotter
 
             if (HandWindow == null) HandWindow = new Hand(Stepper_X, Stepper_Y, Servo_Z, ipcon);
             if (AutoWindow == null) AutoWindow = new Automatik(Stepper_X, Stepper_Y, Servo_Z, ipcon);
+
             BtnAuto.Click += new RoutedEventHandler(this.BtnAuto_Click);
             BtnHand.Click += new RoutedEventHandler(this.BtnHand_Click);
             BtnConnect.Click += new RoutedEventHandler(this.BtnConnect_Click);
@@ -95,10 +96,13 @@ namespace Plotter
             //if (ipcon.GetConnectionState() == 0) ipcon.Connect(HOST, Port);
             //if (ipcon.GetConnectionState() > 0) BtnConnect.Background = Brushes.Green;
         }
-        private void BtnAuto_Click(Object sender, EventArgs e)
+        private async void BtnAuto_Click(Object sender, EventArgs e)
         {
             //if (ipcon.GetConnectionState() > 0) Main.Content = AutoWindow;
-            Main.Content = AutoWindow;
+            Task task1 = Task.Run(() => {
+                Main.Content = AutoWindow;
+            });
+            await task1;
         }
 
         private void BtnHand_Click(Object sender, EventArgs e)

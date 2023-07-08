@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpDX.DirectInput;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -46,6 +47,37 @@ namespace Plotter
             BtnHandLeft.Click += new RoutedEventHandler(this.BtnHandLeft_MouseDown);
             BtnHandRight.Click += new RoutedEventHandler(this.BtnHandRight_MouseDown);
             BtnZDown.Click += new RoutedEventHandler(this.BtnZDown_MouseDown);
+
+            var directInput = new DirectInput();
+            var joystickGuid = Guid.Empty;
+
+            foreach (var deviceInstance in directInput.GetDevices(DeviceType.Gamepad, DeviceEnumerationFlags.AllDevices))
+                joystickGuid = deviceInstance.InstanceGuid;
+
+            if (joystickGuid == Guid.Empty)
+                foreach (var deviceInstance in directInput.GetDevices(DeviceType.Joystick, DeviceEnumerationFlags.AllDevices))
+                    joystickGuid = deviceInstance.InstanceGuid;
+
+            if (joystickGuid == Guid.Empty)
+            {
+                Console.WriteLine("Kein Controller");
+            }
+
+            var joystick = new Joystick(directInput, joystickGuid);
+
+            joystick.Properties.BufferSize = 128;
+            joystick.Acquire();
+
+            while (true)
+            {
+                joystick.Poll();
+                var data = joystick.GetBufferedData();
+
+                foreach(var state in data)
+                {
+                    testbox.Text += state;
+                }
+            }
         }
         private void BtnHandUp_MouseDown(object sender, EventArgs e) 
         {
